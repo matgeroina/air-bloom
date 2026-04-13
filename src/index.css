@@ -1,0 +1,161 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillText {
+  to {
+    fill: rgba(255, 255, 255, 0.38);
+  }
+}
+
+:root {
+  --rounded-box: 1.5rem;
+  --bg-soft: #e9dde2;
+  --bg-cream: #f6eff2;
+  --panel: rgba(255, 255, 255, 0.58);
+  --panel-strong: rgba(255, 255, 255, 0.76);
+  --text-main: #4d3c42;
+  --text-soft: #715d64;
+  --accent: #d4a5b3;
+  --accent-hover: #c792a2;
+  --border-soft: rgba(120, 92, 101, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-soft);
+  color: var(--text-main);
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.script-font {
+  font-family: "Great Vibes", cursive;
+}
+
+.luxury-serif {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.soft-section {
+  background: linear-gradient(180deg, #efe3e8 0%, #f7f1f3 100%);
+}
+
+.glass-card {
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 10px 30px rgba(95, 72, 80, 0.08);
+}
+
+.soft-card {
+  background: var(--panel-strong);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 10px 24px rgba(95, 72, 80, 0.06);
+}
+
+.soft-btn {
+  border-radius: 9999px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  transition: 0.25s ease;
+}
+
+.soft-btn:hover {
+  background: var(--accent-hover);
+}
+
+.soft-btn-outline {
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(127, 97, 107, 0.2);
+  color: var(--text-soft);
+  transition: 0.25s ease;
+}
+
+.soft-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.78rem;
+  color: #b796a0;
+}
+
+.big-background-word {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(10rem, 24vw, 34rem);
+  line-height: 0.8;
+  color: rgba(255, 255, 255, 0.52);
+  transform: rotate(-7deg);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.input,
+.select,
+.textarea {
+  border-radius: 1.2rem;
+  border: 1px solid rgba(120, 92, 101, 0.14);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text-main);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: rgba(212, 165, 179, 0.8);
+  box-shadow: 0 0 0 3px rgba(212, 165, 179, 0.14);
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(56px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.gallery-tile {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(95, 72, 80, 0.12);
+}
+.lace-text {
+  font-family: "Great Vibes", cursive;
+}
