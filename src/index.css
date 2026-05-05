@@ -1,117 +1,274 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
 @keyframes drawText {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes drawText {
-  to {
-    stroke-dashoffset: 0;
-  }
+  to { stroke-dashoffset: 0; }
 }
 
 @keyframes fillText {
-  to {
-    fill: rgba(255, 255, 255, 0.38);
-  }
+  to { fill: rgba(255, 255, 255, 0.38); }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes galleryEnter {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Design tokens ─────────────────────────────────────────────── */
 :root {
   --rounded-box: 1.5rem;
   --bg-soft: #e9dde2;
   --bg-cream: #f6eff2;
-  --panel: rgba(255, 255, 255, 0.58);
-  --panel-strong: rgba(255, 255, 255, 0.76);
+  --panel: rgba(255, 255, 255, 0.55);
+  --panel-strong: rgba(255, 255, 255, 0.78);
   --text-main: #4d3c42;
   --text-soft: #715d64;
   --accent: #d4a5b3;
-  --accent-hover: #c792a2;
-  --border-soft: rgba(120, 92, 101, 0.14);
+  --accent-hover: #c088a1;
+  --accent-glow: rgba(212, 165, 179, 0.35);
+  --border-soft: rgba(120, 92, 101, 0.11);
+  --shadow-card: 0 8px 32px rgba(95, 72, 80, 0.07);
+  --shadow-card-hover: 0 20px 56px rgba(95, 72, 80, 0.13);
+  --shadow-btn: 0 2px 16px rgba(212, 165, 179, 0.32);
+  --shadow-btn-hover: 0 8px 26px rgba(192, 136, 161, 0.45);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* ── Base ──────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   background: var(--bg-soft);
   color: var(--text-main);
   font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "Cormorant Garamond", serif;
 }
 
-.script-font {
-  font-family: "Great Vibes", cursive;
+/* ── Focus ring ────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-.luxury-serif {
+/* ── Typography ────────────────────────────────────────────────── */
+.script-font  { font-family: "Great Vibes", cursive; }
+.luxury-serif { font-family: "Cormorant Garamond", serif; }
+
+.section-title {
   font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.4rem, 4.5vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #b796a0;
+  font-family: "Inter", sans-serif;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.6rem;
+  height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* ── Backgrounds ───────────────────────────────────────────────── */
 .soft-section {
-  background: linear-gradient(180deg, #efe3e8 0%, #f7f1f3 100%);
+  background: linear-gradient(180deg, #ede1e6 0%, #f8f2f5 100%);
 }
 
+/* ── Blobs ─────────────────────────────────────────────────────── */
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  opacity: 0.55;
+  pointer-events: none;
+  animation: float 9s ease-in-out infinite;
+}
+.hero-blob:nth-child(2) { animation-delay: -3.5s; animation-duration: 11s; }
+.hero-blob:nth-child(3) { animation-delay: -6s;   animation-duration: 13s; }
+
+/* ── Cards ─────────────────────────────────────────────────────── */
 .glass-card {
   background: var(--panel);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 10px 30px rgba(95, 72, 80, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .soft-card {
   background: var(--panel-strong);
   border: 1px solid var(--border-soft);
-  box-shadow: 0 10px 24px rgba(95, 72, 80, 0.06);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.soft-card:hover,
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ── Buttons ───────────────────────────────────────────────────── */
 .soft-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 9999px;
   border: none;
   background: var(--accent);
   color: white;
-  transition: 0.25s ease;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: background 0.25s ease,
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease;
 }
 
 .soft-btn:hover {
   background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
+}
+
+.soft-btn:active { transform: translateY(0); }
+
+.soft-btn:disabled,
+.soft-btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .soft-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(127, 97, 107, 0.2);
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(127, 97, 107, 0.16);
   color: var(--text-soft);
-  transition: 0.25s ease;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.25s ease,
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease;
 }
 
 .soft-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.88);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(95, 72, 80, 0.09);
 }
 
-.section-title {
-  font-size: clamp(2.2rem, 4vw, 4rem);
-  line-height: 1;
-  letter-spacing: 0.01em;
+.soft-btn-outline:active { transform: translateY(0); }
+
+/* ── Form elements ─────────────────────────────────────────────── */
+.input,
+.select,
+.textarea {
+  border-radius: 1rem;
+  border: 1.5px solid rgba(120, 92, 101, 0.13);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text-main);
+  padding: 0.7rem 1rem;
+  width: 100%;
+  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.78rem;
-  color: #b796a0;
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: rgba(212, 165, 179, 0.75);
+  box-shadow: 0 0 0 3px rgba(212, 165, 179, 0.13);
 }
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(113, 93, 100, 0.4);
+}
+
+/* ── Gallery ───────────────────────────────────────────────────── */
+.gallery-tile {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease;
+}
+
+.gallery-tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 56px rgba(95, 72, 80, 0.14);
+}
+
+/* ── Page & scroll animations ──────────────────────────────────── */
+.page-enter {
+  animation: pageEnter 0.38s ease forwards;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Utilities ─────────────────────────────────────────────────── */
+.float-anim {
+  animation: float 7s ease-in-out infinite;
+}
+
+.lace-text { font-family: "Great Vibes", cursive; }
 
 .big-background-word {
   font-family: "Great Vibes", cursive;
@@ -123,39 +280,13 @@ h6 {
   user-select: none;
 }
 
-.input,
-.select,
-.textarea {
-  border-radius: 1.2rem;
-  border: 1px solid rgba(120, 92, 101, 0.14);
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--text-main);
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus {
-  outline: none;
-  border-color: rgba(212, 165, 179, 0.8);
-  box-shadow: 0 0 0 3px rgba(212, 165, 179, 0.14);
-}
-
-.hero-blob {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(56px);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.gallery-tile {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.gallery-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(95, 72, 80, 0.12);
-}
-.lace-text {
-  font-family: "Great Vibes", cursive;
+/* ── Spinner (used in form) ────────────────────────────────────── */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: drawText 0.7s linear infinite;
 }

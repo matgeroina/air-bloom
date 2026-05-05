@@ -4,15 +4,17 @@ export const content = {
       home: "Home",
       services: "Services",
       gallery: "Gallery",
+      about: "About",
       contact: "Contact",
       quote: "Get a Quote",
     },
 
     footer: {
       description:
-        "Elegant balloon styling for birthdays, baby showers, weddings, and special celebrations with a soft, polished look.",
+        "Elegant balloon styling for birthdays, baby showers, weddings, and special celebrations.",
       navigation: "Navigation",
       contact: "Contact",
+      copyright: "© 2025 Air Decor Studio. All rights reserved.",
     },
 
     home: {
@@ -25,6 +27,14 @@ export const content = {
       packagesTitle: "Our decoration packages",
       packagesText:
         "Designed with soft color palettes, elegant shapes, and a polished event look.",
+      package1Text:
+        "A soft and simple setup perfect for birthdays and intimate celebrations.",
+      package2Text:
+        "A fuller focal arrangement with layered styling and custom color details.",
+      package3Text:
+        "A statement installation crafted for elevated events and grand celebrations.",
+      viewDetails: "inquire about this package",
+      viewAllServices: "Explore all packages",
     },
 
     common: {
@@ -54,7 +64,7 @@ export const content = {
           "We focus on light, elegant, and airy balloon styling that feels refined and visually balanced.",
         personalApproachTitle: "Personal Approach",
         personalApproachText:
-          "Each event is different, so we shape our designs around the client’s vision, color palette, and atmosphere.",
+          "Each event is different, so we shape our designs around the client's vision, color palette, and atmosphere.",
         ongoingGrowthTitle: "Ongoing Growth",
         ongoingGrowthText:
           "Our studio is continuously evolving through design refinement, new ideas, and thoughtful improvements.",
@@ -88,7 +98,7 @@ export const content = {
           "We continue adjusting and improving details so the final setup feels cohesive, soft, and polished.",
       },
 
-      ctaEyebrow: "let’s create something beautiful",
+      ctaEyebrow: "let's create something beautiful",
       ctaTitle:
         "Thoughtful balloon decor for celebrations that deserve a soft, elevated look",
       ctaText:
@@ -99,20 +109,21 @@ export const content = {
     gallery: {
       eyebrow: "gallery",
       title: "Browse soft, elegant event inspiration",
-      text: "Organized layouts, gentle colors, and a refined visual presentation for easy browsing.",
+      text: "Gentle colors, organized layouts, and a refined visual presentation for every occasion.",
       all: "All",
       birthday: "Birthday",
       wedding: "Wedding",
       babyShower: "Baby Shower",
       corporate: "Corporate",
-      placeholder: "image placeholder",
+      placeholder: "photo coming soon",
     },
 
     services: {
       eyebrow: "services",
       title: "Packages for elegant event styling",
-      text: "Structured package presentation with soft visuals, readable content hierarchy, and a refined luxury feel.",
+      text: "Every package is built around soft color palettes, elegant proportions, and a polished look that photographs beautifully.",
       inquire: "inquire now",
+      popular: "Most Popular",
 
       feature1: "Balloon garland",
       feature2: "Soft color palette",
@@ -138,7 +149,7 @@ export const content = {
     quote: {
       eyebrow: "request a quote",
       title: "Tell us about your event",
-      text: "A clean, accessible inquiry form with soft styling and organized event details.",
+      text: "Fill in the details below and we'll get back to you within 24 hours with a personalised quote.",
 
       whatWeAsk: "What we ask for",
       ask1: "basic contact information",
@@ -160,7 +171,11 @@ export const content = {
       selectPackage: "Select a package",
 
       submit: "submit request",
-      submitted: "Your quote request has been submitted.",
+      submitting: "sending…",
+      submitted: "Your request has been received. We'll be in touch soon!",
+      submitAnother: "submit another request",
+      requiredNote: "required fields",
+      errorMsg: "Something went wrong. Please try again.",
     },
   },
 
@@ -169,6 +184,7 @@ export const content = {
       home: "Главная",
       services: "Услуги",
       gallery: "Галерея",
+      about: "О нас",
       contact: "Контакты",
       quote: "Получить расчет",
     },
@@ -178,6 +194,7 @@ export const content = {
         "Элегантное оформление шарами для дней рождения, baby shower, свадеб и особенных праздников.",
       navigation: "Навигация",
       contact: "Контакты",
+      copyright: "© 2025 Air Decor Studio. Все права защищены.",
     },
 
     home: {
@@ -190,6 +207,14 @@ export const content = {
       packagesTitle: "Наши пакеты оформления",
       packagesText:
         "Продуманные композиции с мягкими оттенками, элегантными формами и аккуратной подачей.",
+      package1Text:
+        "Нежная и простая композиция, идеальная для дней рождения и камерных праздников.",
+      package2Text:
+        "Более объемная инсталляция с многослойным оформлением и индивидуальной палитрой.",
+      package3Text:
+        "Акцентная инсталляция, созданная для торжественных мероприятий и крупных праздников.",
+      viewDetails: "уточнить детали пакета",
+      viewAllServices: "Все пакеты",
     },
 
     common: {
@@ -230,7 +255,7 @@ export const content = {
       storyText1:
         "Air Decor начался как творческая идея, вдохновленная любовью к элегантному и женственному оформлению мероприятий. С самого начала цель была в том, чтобы создавать визуальный опыт, который выглядит выше стандартного праздничного декора.",
       storyText2:
-        "Мы продолжаем улучшать структуру страниц, стилистическое направление и подачу услуг, одновременно ищем способы сделать клиентский путь более удобным и приятным. На этом этапе бренд находится в процессе refinement, experimentation и постепенного движения к более polished результату.",
+        "Мы продолжаем улучшать структуру страниц, стилистическое направление и подачу услуг, одновременно ищем способы сделать клиентский путь более удобным. Этот этап для бренда — время доработки, экспериментов и постепенного движения к более отточенному результату.",
 
       whyEyebrow: "почему нас выбирают",
       why1: "нежное и элегантное визуальное направление",
@@ -264,20 +289,21 @@ export const content = {
     gallery: {
       eyebrow: "галерея",
       title: "Нежное и элегантное вдохновение для ваших мероприятий",
-      text: "Продуманная структура, мягкие оттенки и аккуратная визуальная подача для удобного просмотра.",
+      text: "Мягкие оттенки, продуманная структура и аккуратная визуальная подача для каждого события.",
       all: "Все",
       birthday: "День рождения",
       wedding: "Свадьба",
       babyShower: "Baby Shower",
       corporate: "Корпоратив",
-      placeholder: "место для изображения",
+      placeholder: "фото скоро появится",
     },
 
     services: {
       eyebrow: "услуги",
       title: "Пакеты для элегантного оформления мероприятий",
-      text: "Структурированная подача пакетов, мягкий визуальный стиль, хорошая читаемость и refined luxury vibe.",
+      text: "Каждый пакет создан с акцентом на мягкие палитры, элегантные пропорции и аккуратную подачу, которая красиво смотрится на фото.",
       inquire: "оставить запрос",
+      popular: "Популярный",
 
       feature1: "Гирлянда из шаров",
       feature2: "Мягкая цветовая палитра",
@@ -303,7 +329,7 @@ export const content = {
     quote: {
       eyebrow: "запросить расчет",
       title: "Расскажите о вашем мероприятии",
-      text: "Чистая, доступная и аккуратно организованная форма для сбора деталей о мероприятии.",
+      text: "Заполните форму ниже, и мы свяжемся с вами в течение 24 часов с персональным расчетом.",
 
       whatWeAsk: "Что мы уточняем",
       ask1: "основную контактную информацию",
@@ -325,7 +351,11 @@ export const content = {
       selectPackage: "Выберите пакет",
 
       submit: "отправить запрос",
-      submitted: "Ваш запрос успешно отправлен.",
+      submitting: "отправляем…",
+      submitted: "Ваш запрос получен. Мы свяжемся с вами в ближайшее время!",
+      submitAnother: "отправить ещё один запрос",
+      requiredNote: "обязательные поля",
+      errorMsg: "Что-то пошло не так. Пожалуйста, попробуйте снова.",
     },
   },
 };

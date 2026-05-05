@@ -1,15 +1,19 @@
 import { Link } from "react-router-dom";
+import { Reveal } from "../components/Reveal";
 
 const values = (t: any) => [
   {
+    icon: "S",
     title: t.about.values.softAestheticTitle,
     text: t.about.values.softAestheticText,
   },
   {
+    icon: "P",
     title: t.about.values.personalApproachTitle,
     text: t.about.values.personalApproachText,
   },
   {
+    icon: "G",
     title: t.about.values.ongoingGrowthTitle,
     text: t.about.values.ongoingGrowthText,
   },
@@ -33,153 +37,164 @@ const processSteps = (t: any) => [
   },
 ];
 
+const whyItems = (t: any) => [
+  t.about.why1,
+  t.about.why2,
+  t.about.why3,
+  t.about.why4,
+  t.about.why5,
+];
+
 export default function About({ t }: any) {
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#efe3e8] to-[#f8f2f4] px-5 py-20 md:px-8 lg:px-12">
-        <div className="hero-blob left-[-4rem] top-10 h-72 w-72 bg-white/40" />
-        <div className="hero-blob right-[-4rem] top-20 h-80 w-80 bg-[#f6dbe4]/70" />
-        <div className="hero-blob bottom-0 left-1/3 h-64 w-64 bg-white/30" />
+      {/* ── Hero ────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#efe3e8] to-[#f8f2f4] px-5 py-24 md:px-8 lg:px-12">
+        <div className="hero-blob left-[-4rem] top-12 h-72 w-72 bg-white/40" />
+        <div className="hero-blob right-[-4rem] top-24 h-80 w-80 bg-[#f6dbe4]/65" />
+        <div className="hero-blob bottom-0 left-1/3 h-64 w-64 bg-white/28" />
 
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
           <div className="relative z-10 max-w-xl">
-            <p className="eyebrow mb-4">{t.about.eyebrow}</p>
-
-            <h1 className="section-title max-w-xl font-semibold text-[#4d3c42]">
+            <p className="eyebrow mb-5">{t.about.eyebrow}</p>
+            <h1 className="section-title font-semibold text-[#4d3c42]">
               {t.about.title}
             </h1>
-
-            <p className="mt-6 max-w-lg text-base leading-7 text-[#715d64] md:text-lg">
+            <p className="mt-6 max-w-lg text-base leading-[1.85] text-[#715d64] md:text-[1.05rem]">
               {t.about.text1}
             </p>
-
-            <p className="mt-5 max-w-lg leading-7 text-[#715d64]">
+            <p className="mt-5 max-w-lg leading-[1.8] text-[#715d64]">
               {t.about.text2}
             </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/quote"
-                className="soft-btn inline-flex px-7 py-3 font-medium shadow-sm"
-              >
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link to="/quote" className="soft-btn px-8 py-3.5 font-medium shadow-sm">
                 {t.about.primaryBtn}
               </Link>
-              <Link
-                to="/gallery"
-                className="soft-btn-outline inline-flex px-7 py-3 font-medium backdrop-blur-sm"
-              >
+              <Link to="/gallery" className="soft-btn-outline px-8 py-3.5 font-medium backdrop-blur-sm">
                 {t.about.secondaryBtn}
               </Link>
             </div>
           </div>
 
           <div className="relative z-10 flex justify-center lg:justify-end">
-            <div className="glass-card flex h-[360px] w-full max-w-[320px] items-center justify-center rounded-[2rem] border border-white/30 text-center text-[#8a7079] shadow-[0_20px_60px_rgba(120,90,100,0.12)] md:h-[460px] md:max-w-[380px]">
-              about image
+            <div className="float-anim glass-card flex h-[380px] w-full max-w-[340px] items-center justify-center rounded-[2.5rem] shadow-[0_24px_72px_rgba(120,90,100,0.13)] md:h-[460px] md:max-w-[390px]">
+              <div className="text-center">
+                <p className="script-font text-6xl text-[#c792a2]">Air Decor</p>
+                <div className="mx-auto mt-4 h-px w-16 bg-gradient-to-r from-transparent via-[#d4a5b3] to-transparent" />
+                <p className="mt-3 text-xs uppercase tracking-[0.3em] text-[#b796a0]">
+                  {t.about.eyebrow}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="soft-section px-5 py-20 md:px-8 lg:px-12">
+      {/* ── Values ──────────────────────────────────────────────── */}
+      <section className="soft-section px-5 py-24 md:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow mb-3">{t.about.valuesEyebrow}</p>
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow mb-4">{t.about.valuesEyebrow}</p>
             <h2 className="section-title font-semibold">{t.about.valuesTitle}</h2>
-            <p className="mt-5 text-[#715d64]">
-              {t.about.valuesText}
-            </p>
-          </div>
+            <p className="mt-5 leading-[1.8] text-[#715d64]">{t.about.valuesText}</p>
+          </Reveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {values(t).map((item) => (
-              <article key={item.title} className="soft-card rounded-[2rem] p-7">
-                <h3 className="luxury-serif text-3xl font-semibold text-[#4d3c42]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 leading-7 text-[#715d64]">{item.text}</p>
-              </article>
-            ))}
-          </div>
+          <Reveal className="mt-14" delay={80}>
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {values(t).map((item) => (
+                <article key={item.title} className="soft-card rounded-[2rem] p-8">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#f6dce5] to-[#ede4ea] text-sm font-semibold text-[#c792a2]">
+                    {item.icon}
+                  </div>
+                  <h3 className="luxury-serif text-3xl font-semibold text-[#4d3c42]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 leading-[1.8] text-[#715d64]">{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-[#f7f1f3] px-5 py-20 md:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <p className="eyebrow mb-3">{t.about.storyEyebrow}</p>
+      {/* ── Story + Why ─────────────────────────────────────────── */}
+      <section className="bg-[#f7f1f3] px-5 py-24 md:px-8 lg:px-12">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+          <Reveal>
+            <p className="eyebrow mb-4">{t.about.storyEyebrow}</p>
             <h2 className="section-title font-semibold">{t.about.storyTitle}</h2>
-
-            <p className="mt-6 max-w-2xl leading-7 text-[#715d64]">
+            <p className="mt-6 max-w-2xl leading-[1.85] text-[#715d64]">
               {t.about.storyText1}
             </p>
-
-            <p className="mt-5 max-w-2xl leading-7 text-[#715d64]">
+            <p className="mt-5 max-w-2xl leading-[1.8] text-[#715d64]">
               {t.about.storyText2}
             </p>
-          </div>
+          </Reveal>
 
-          <div className="soft-card rounded-[2rem] p-7">
-            <p className="eyebrow mb-3">{t.about.whyEyebrow}</p>
-            <ul className="space-y-4 text-[#715d64]">
-              <li>• {t.about.why1}</li>
-              <li>• {t.about.why2}</li>
-              <li>• {t.about.why3}</li>
-              <li>• {t.about.why4}</li>
-              <li>• {t.about.why5}</li>
-            </ul>
-          </div>
+          <Reveal delay={80}>
+            <div className="soft-card h-full rounded-[2rem] p-8">
+              <p className="eyebrow mb-5">{t.about.whyEyebrow}</p>
+              <ul className="space-y-4">
+                {whyItems(t).map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-[#715d64]">
+                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#d4a5b3]/20 text-[0.65rem] font-bold text-[#c792a2]">
+                      ✓
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="soft-section px-5 py-20 md:px-8 lg:px-12">
+      {/* ── Process ─────────────────────────────────────────────── */}
+      <section className="soft-section px-5 py-24 md:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl">
-            <p className="eyebrow mb-3">{t.about.processEyebrow}</p>
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow mb-4">{t.about.processEyebrow}</p>
             <h2 className="section-title font-semibold">{t.about.processTitle}</h2>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {processSteps(t).map((step) => (
-              <article key={step.number} className="soft-card rounded-[2rem] p-7">
-                <p className="text-sm uppercase tracking-[0.25em] text-[#b796a0]">
-                  {step.number}
-                </p>
-                <h3 className="luxury-serif mt-3 text-3xl font-semibold text-[#4d3c42]">
-                  {step.title}
-                </h3>
-                <p className="mt-4 leading-7 text-[#715d64]">{step.text}</p>
-              </article>
-            ))}
-          </div>
+          <Reveal className="mt-14" delay={80}>
+            <div className="grid gap-6 lg:grid-cols-3">
+              {processSteps(t).map((step) => (
+                <article key={step.number} className="soft-card rounded-[2rem] p-8">
+                  {/* Number circle */}
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#f6dce5] to-[#ede4ea]">
+                    <span className="text-sm font-semibold tracking-widest text-[#c792a2]">
+                      {step.number}
+                    </span>
+                  </div>
+                  <h3 className="luxury-serif text-3xl font-semibold text-[#4d3c42]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-4 leading-[1.8] text-[#715d64]">{step.text}</p>
+                </article>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-[#f6eff2] px-5 py-20 md:px-8 lg:px-12">
-        <div className="mx-auto max-w-5xl text-center">
-          <p className="eyebrow mb-3">{t.about.ctaEyebrow}</p>
-          <h2 className="section-title font-semibold">
-            {t.about.ctaTitle}
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#715d64]">
+      {/* ── CTA ─────────────────────────────────────────────────── */}
+      <section className="bg-gradient-to-b from-[#f6eff2] to-[#ece2e6] px-5 py-24 md:px-8 lg:px-12">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="eyebrow mb-4">{t.about.ctaEyebrow}</p>
+          <h2 className="section-title font-semibold">{t.about.ctaTitle}</h2>
+          <p className="mx-auto mt-6 max-w-xl leading-[1.8] text-[#715d64]">
             {t.about.ctaText}
           </p>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/quote"
-              className="soft-btn inline-flex px-7 py-3 font-medium shadow-sm"
-            >
+          <div className="mt-9 flex flex-wrap justify-center gap-4">
+            <Link to="/quote" className="soft-btn px-8 py-3.5 font-medium shadow-sm">
               {t.about.primaryBtn}
             </Link>
-            <Link
-              to="/services"
-              className="soft-btn-outline inline-flex px-7 py-3 font-medium backdrop-blur-sm"
-            >
+            <Link to="/services" className="soft-btn-outline px-8 py-3.5 font-medium backdrop-blur-sm">
               {t.about.servicesBtn}
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
 type FormData = {
   fullName: string;
@@ -26,7 +27,8 @@ const initialForm: FormData = {
 
 export default function Quote({ t }: any) {
   const [formData, setFormData] = useState<FormData>(initialForm);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -35,9 +37,30 @@ export default function Quote({ t }: any) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    setStatus("loading");
+    setErrorMsg("");
+
+    const { error } = await supabase.from("quote_requests").insert({
+      full_name: formData.fullName,
+      email: formData.email,
+      phone: formData.phone || null,
+      event_type: formData.eventType,
+      event_date: formData.eventDate,
+      location: formData.location || null,
+      package_type: formData.packageType,
+      colors: formData.colors || null,
+      notes: formData.notes || null,
+    });
+
+    if (error) {
+      setStatus("error");
+      setErrorMsg(error.message);
+    } else {
+      setStatus("success");
+      setFormData(initialForm);
+    }
   }
 
   return (
@@ -62,163 +85,209 @@ export default function Quote({ t }: any) {
         </div>
 
         <div className="glass-card rounded-[2rem] p-7 md:p-8">
-          <form className="space-y-5" onSubmit={handleSubmit}>
-            <div className="grid gap-5 md:grid-cols-2">
-              <div>
-                <label htmlFor="fullName" className="mb-2 block text-sm text-[#715d64]">
-                  {t.quote.fullName}
-                </label>
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  required
-                  className="input w-full"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                />
+          {status === "success" ? (
+            <div role="alert" className="flex flex-col items-center gap-4 py-12 text-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#d4a5b3]/20 text-3xl">
+                ✓
               </div>
-
-              <div>
-                <label htmlFor="email" className="mb-2 block text-sm text-[#715d64]">
-                  {t.quote.email}
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="input w-full"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-5 md:grid-cols-2">
-              <div>
-                <label htmlFor="phone" className="mb-2 block text-sm text-[#715d64]">
-                  {t.quote.phone}
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  className="input w-full"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="eventDate" className="mb-2 block text-sm text-[#715d64]">
-                  {t.quote.eventDate}
-                </label>
-                <input
-                  id="eventDate"
-                  name="eventDate"
-                  type="date"
-                  required
-                  className="input w-full"
-                  value={formData.eventDate}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-5 md:grid-cols-2">
-              <div>
-                <label htmlFor="eventType" className="mb-2 block text-sm text-[#715d64]">
-                  {t.quote.eventType}
-                </label>
-                <select
-                  id="eventType"
-                  name="eventType"
-                  required
-                  className="select w-full"
-                  value={formData.eventType}
-                  onChange={handleChange}
-                >
-                  <option value="">{t.quote.selectEvent}</option>
-                  <option value="Birthday">{t.gallery.birthday}</option>
-                  <option value="Wedding">{t.gallery.wedding}</option>
-                  <option value="Baby Shower">{t.gallery.babyShower}</option>
-                  <option value="Corporate">{t.gallery.corporate}</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="packageType" className="mb-2 block text-sm text-[#715d64]">
-                  {t.quote.packageType}
-                </label>
-                <select
-                  id="packageType"
-                  name="packageType"
-                  required
-                  className="select w-full"
-                  value={formData.packageType}
-                  onChange={handleChange}
-                >
-                  <option value="">{t.quote.selectPackage}</option>
-                  <option value="Basic">{t.common.basic}</option>
-                  <option value="Premium">{t.common.premium}</option>
-                  <option value="Luxury">{t.common.luxury}</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="location" className="mb-2 block text-sm text-[#715d64]">
-                {t.quote.location}
-              </label>
-              <input
-                id="location"
-                name="location"
-                type="text"
-                className="input w-full"
-                value={formData.location}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="colors" className="mb-2 block text-sm text-[#715d64]">
-                {t.quote.colors}
-              </label>
-              <input
-                id="colors"
-                name="colors"
-                type="text"
-                className="input w-full"
-                value={formData.colors}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="notes" className="mb-2 block text-sm text-[#715d64]">
-                {t.quote.notes}
-              </label>
-              <textarea
-                id="notes"
-                name="notes"
-                rows={5}
-                className="textarea w-full"
-                value={formData.notes}
-                onChange={handleChange}
-              />
-            </div>
-
-            <button type="submit" className="soft-btn inline-flex px-6 py-3 font-medium">
-              {t.quote.submit}
-            </button>
-
-            {submitted && (
-              <div className="mt-4 rounded-[1.2rem] border border-white/40 bg-white/60 px-5 py-4 text-[#5c484f]">
+              <p className="luxury-serif text-2xl font-semibold text-[#4d3c42]">
                 {t.quote.submitted}
+              </p>
+              <button
+                className="soft-btn-outline mt-2 px-6 py-3 text-sm font-medium"
+                onClick={() => setStatus("idle")}
+              >
+                {t.quote.submitAnother}
+              </button>
+            </div>
+          ) : (
+            <form
+              className="space-y-5"
+              onSubmit={handleSubmit}
+              aria-label={t.quote.title}
+              noValidate
+            >
+              <p className="text-xs text-[#b796a0]">
+                <span aria-hidden="true">*</span>{" "}
+                <span>{t.quote.requiredNote}</span>
+              </p>
+
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label htmlFor="fullName" className="mb-2 block text-sm text-[#715d64]">
+                    {t.quote.fullName} <span aria-hidden="true" className="text-[#c792a2]">*</span>
+                  </label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    required
+                    aria-required="true"
+                    autoComplete="name"
+                    className="input w-full"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="mb-2 block text-sm text-[#715d64]">
+                    {t.quote.email} <span aria-hidden="true" className="text-[#c792a2]">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    aria-required="true"
+                    autoComplete="email"
+                    className="input w-full"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-            )}
-          </form>
+
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label htmlFor="phone" className="mb-2 block text-sm text-[#715d64]">
+                    {t.quote.phone}
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    className="input w-full"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="eventDate" className="mb-2 block text-sm text-[#715d64]">
+                    {t.quote.eventDate} <span aria-hidden="true" className="text-[#c792a2]">*</span>
+                  </label>
+                  <input
+                    id="eventDate"
+                    name="eventDate"
+                    type="date"
+                    required
+                    aria-required="true"
+                    className="input w-full"
+                    value={formData.eventDate}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label htmlFor="eventType" className="mb-2 block text-sm text-[#715d64]">
+                    {t.quote.eventType} <span aria-hidden="true" className="text-[#c792a2]">*</span>
+                  </label>
+                  <select
+                    id="eventType"
+                    name="eventType"
+                    required
+                    aria-required="true"
+                    className="select w-full"
+                    value={formData.eventType}
+                    onChange={handleChange}
+                  >
+                    <option value="">{t.quote.selectEvent}</option>
+                    <option value="Birthday">{t.gallery.birthday}</option>
+                    <option value="Wedding">{t.gallery.wedding}</option>
+                    <option value="Baby Shower">{t.gallery.babyShower}</option>
+                    <option value="Corporate">{t.gallery.corporate}</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="packageType" className="mb-2 block text-sm text-[#715d64]">
+                    {t.quote.packageType} <span aria-hidden="true" className="text-[#c792a2]">*</span>
+                  </label>
+                  <select
+                    id="packageType"
+                    name="packageType"
+                    required
+                    aria-required="true"
+                    className="select w-full"
+                    value={formData.packageType}
+                    onChange={handleChange}
+                  >
+                    <option value="">{t.quote.selectPackage}</option>
+                    <option value="Basic">{t.common.basic}</option>
+                    <option value="Premium">{t.common.premium}</option>
+                    <option value="Luxury">{t.common.luxury}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="location" className="mb-2 block text-sm text-[#715d64]">
+                  {t.quote.location}
+                </label>
+                <input
+                  id="location"
+                  name="location"
+                  type="text"
+                  className="input w-full"
+                  value={formData.location}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="colors" className="mb-2 block text-sm text-[#715d64]">
+                  {t.quote.colors}
+                </label>
+                <input
+                  id="colors"
+                  name="colors"
+                  type="text"
+                  className="input w-full"
+                  value={formData.colors}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="notes" className="mb-2 block text-sm text-[#715d64]">
+                  {t.quote.notes}
+                </label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows={5}
+                  className="textarea w-full"
+                  value={formData.notes}
+                  onChange={handleChange}
+                />
+              </div>
+
+              {status === "error" && (
+                <div role="alert" className="rounded-[1.2rem] border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
+                  {t.quote.errorMsg} {errorMsg && `(${errorMsg})`}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                aria-disabled={status === "loading"}
+                className="soft-btn inline-flex items-center gap-2 px-6 py-3 font-medium disabled:opacity-60"
+              >
+                {status === "loading" && (
+                  <span
+                    className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"
+                    aria-hidden="true"
+                  />
+                )}
+                {status === "loading" ? t.quote.submitting : t.quote.submit}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>
