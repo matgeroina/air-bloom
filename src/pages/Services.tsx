@@ -1,33 +1,44 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Reveal } from "../components/Reveal";
+import { Accordion } from "../components/Accordion";
+import type { T } from "../content";
 
-const services = (t: any) => [
+const services = (t: T) => [
   {
     tier: "01",
     title: t.common.basic,
-    price: "from $150",
+    price: t.common.price1,
     features: [t.services.feature1, t.services.feature2, t.services.feature3],
     featured: false,
   },
   {
     tier: "02",
     title: t.common.premium,
-    price: "from $250",
+    price: t.common.price2,
     features: [t.services.feature4, t.services.feature5, t.services.feature6],
     featured: true,
   },
   {
     tier: "03",
     title: t.common.luxury,
-    price: "from $400",
+    price: t.common.price3,
     features: [t.services.feature7, t.services.feature8, t.services.feature9],
     featured: false,
   },
 ];
 
-export default function Services({ t }: any) {
+export default function Services({ t }: { t: T }) {
   return (
     <>
+      <Helmet>
+        <title>Services & Packages — Air Decor</title>
+        <meta name="description" content="Explore our elegant balloon decoration packages — Basic, Premium, and Luxury — crafted with soft color palettes and polished styling." />
+        <meta property="og:title" content="Services & Packages — Air Decor" />
+        <meta property="og:description" content="Balloon decoration packages for every event. Beautiful, soft, and elegant." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       <section className="soft-section px-5 py-24 md:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           {/* Header */}
@@ -139,20 +150,33 @@ export default function Services({ t }: any) {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="bg-[#f7f1f3] px-5 py-24 md:px-8 lg:px-12">
+        <div className="mx-auto max-w-4xl">
+          <Reveal>
+            <p className="eyebrow mb-4">{t.services.faqEyebrow}</p>
+            <h2 className="section-title font-semibold">{t.services.faqTitle}</h2>
+          </Reveal>
+          <Reveal className="mt-10" delay={80}>
+            <Accordion items={t.services.faq} />
+          </Reveal>
+        </div>
+      </section>
+
       {/* CTA strip */}
       <section className="bg-gradient-to-r from-[#f0e3e8] via-[#f7f0f3] to-[#f0e3e8] px-5 py-16 md:px-8 lg:px-12">
         <Reveal className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
           <div>
-            <p className="eyebrow mb-2">{t.about.ctaEyebrow}</p>
+            <p className="eyebrow mb-2">{t.services.ctaEyebrow}</p>
             <p className="luxury-serif text-2xl font-semibold text-[#4d3c42] md:text-3xl">
-              {t.about.ctaTitle}
+              {t.services.ctaTitle}
             </p>
           </div>
           <Link
             to="/quote"
             className="soft-btn flex-shrink-0 px-8 py-3.5 font-medium"
           >
-            {t.about.primaryBtn}
+            {t.services.ctaBtn}
           </Link>
         </Reveal>
       </section>

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Reveal } from "../components/Reveal";
+import type { T } from "../content";
 
-const values = (t: any) => [
+const values = (t: T) => [
   {
     icon: "S",
     title: t.about.values.softAestheticTitle,
@@ -19,7 +21,7 @@ const values = (t: any) => [
   },
 ];
 
-const processSteps = (t: any) => [
+const processSteps = (t: T) => [
   {
     number: "01",
     title: t.about.process.consultationTitle,
@@ -37,7 +39,7 @@ const processSteps = (t: any) => [
   },
 ];
 
-const whyItems = (t: any) => [
+const whyItems = (t: T) => [
   t.about.why1,
   t.about.why2,
   t.about.why3,
@@ -45,9 +47,17 @@ const whyItems = (t: any) => [
   t.about.why5,
 ];
 
-export default function About({ t }: any) {
+export default function About({ t }: { t: T }) {
   return (
     <>
+      <Helmet>
+        <title>About — Air Decor</title>
+        <meta name="description" content="Learn about Air Decor — a growing balloon studio focused on soft, elegant, and thoughtfully styled event decor." />
+        <meta property="og:title" content="About Air Decor" />
+        <meta property="og:description" content="A growing balloon decoration studio with a love for soft palettes, elevated details, and designs that feel light and memorable." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#efe3e8] to-[#f8f2f4] px-5 py-24 md:px-8 lg:px-12">
         <div className="hero-blob left-[-4rem] top-12 h-72 w-72 bg-white/40" />
@@ -90,7 +100,6 @@ export default function About({ t }: any) {
         </div>
       </section>
 
-      {/* ── Values ──────────────────────────────────────────────── */}
       <section className="soft-section px-5 py-24 md:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <Reveal className="mx-auto max-w-2xl text-center">

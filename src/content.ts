@@ -14,7 +14,8 @@ export const content = {
         "Elegant balloon styling for birthdays, baby showers, weddings, and special celebrations.",
       navigation: "Navigation",
       contact: "Contact",
-      copyright: "© 2025 Air Decor Studio. All rights reserved.",
+      followUs: "Follow Us",
+      copyright: "Air Decor Studio. All rights reserved.",
     },
 
     home: {
@@ -35,12 +36,38 @@ export const content = {
         "A statement installation crafted for elevated events and grand celebrations.",
       viewDetails: "inquire about this package",
       viewAllServices: "Explore all packages",
+
+      testimonialsEyebrow: "client reviews",
+      testimonialsTitle: "Kind words from our clients",
+      testimonials: [
+        {
+          name: "Sarah M.",
+          event: "Birthday Party",
+          quote:
+            "Air Decor completely transformed our venue. The balloon garland was absolutely stunning — so soft and elegant. Every single guest asked who did the decor!",
+        },
+        {
+          name: "Emily & Jake",
+          event: "Wedding",
+          quote:
+            "We couldn't have imagined our wedding without the gorgeous arch they created. Exactly the soft, romantic aesthetic we dreamed of. Highly recommend!",
+        },
+        {
+          name: "Tanya R.",
+          event: "Baby Shower",
+          quote:
+            "The pastel palette they chose was beyond perfect. Everything looked so beautifully coordinated. It made our baby shower feel truly special.",
+        },
+      ],
     },
 
     common: {
       basic: "Basic",
       premium: "Premium",
       luxury: "Luxury",
+      price1: "from $150",
+      price2: "from $250",
+      price3: "from $400",
     },
 
     about: {
@@ -144,6 +171,39 @@ export const content = {
       designApproach: "Design approach",
       designText:
         "Each design focuses on softness, visual balance, elegant proportions, and a polished look that photographs beautifully.",
+
+      ctaEyebrow: "let's create something beautiful",
+      ctaTitle: "Thoughtful balloon decor for celebrations that deserve a soft, elevated look",
+      ctaBtn: "get a quote",
+
+      faqEyebrow: "FAQ",
+      faqTitle: "Frequently asked questions",
+      faq: [
+        {
+          q: "How far in advance should I book?",
+          a: "We recommend booking at least 3–4 weeks in advance for standard events, and 6–8 weeks for weddings or large installations. This ensures enough time for planning, color sourcing, and design preparation.",
+        },
+        {
+          q: "Do you deliver and set up?",
+          a: "Yes — delivery and full setup are included in every package. We arrive early to ensure everything is perfectly arranged and looking its best before your guests arrive.",
+        },
+        {
+          q: "Can I customize the colors?",
+          a: "Absolutely. Color customization is available with all packages. We work closely with you to match your event's palette as precisely as possible, including specific shades and gradient combinations.",
+        },
+        {
+          q: "How long do balloon decorations last?",
+          a: "Indoor latex balloon arrangements typically look beautiful for 12–24 hours. Foil balloons can last several days. We design everything to look its best throughout your event and well into the day after.",
+        },
+        {
+          q: "Do you offer add-ons to existing packages?",
+          a: "Yes! We offer a range of add-ons including custom signs, extended backdrops, premium balloon types, and larger installation extensions. These can be added to any package during the consultation.",
+        },
+        {
+          q: "What is your cancellation policy?",
+          a: "We ask for at least 48 hours notice for cancellations. Deposits are non-refundable but can be applied to a rescheduled event within 6 months of the original date.",
+        },
+      ],
     },
 
     quote: {
@@ -177,6 +237,22 @@ export const content = {
       requiredNote: "required fields",
       errorMsg: "Something went wrong. Please try again.",
     },
+
+    thankYou: {
+      eyebrow: "request received",
+      title: "Thank you for reaching out!",
+      text: "We've received your quote request and will get back to you within 24 hours with a personalised response. In the meantime, feel free to browse our gallery for inspiration.",
+      homeBtn: "back to home",
+      galleryBtn: "view gallery",
+    },
+
+    notFound: {
+      label: "404",
+      title: "Page not found",
+      text: "It seems this page has floated away. Let's get you back to something beautiful.",
+      homeBtn: "back to home",
+      galleryBtn: "view gallery",
+    },
   },
 
   ru: {
@@ -194,7 +270,8 @@ export const content = {
         "Элегантное оформление шарами для дней рождения, baby shower, свадеб и особенных праздников.",
       navigation: "Навигация",
       contact: "Контакты",
-      copyright: "© 2025 Air Decor Studio. Все права защищены.",
+      followUs: "Мы в соцсетях",
+      copyright: "Air Decor Studio. Все права защищены.",
     },
 
     home: {
@@ -215,12 +292,38 @@ export const content = {
         "Акцентная инсталляция, созданная для торжественных мероприятий и крупных праздников.",
       viewDetails: "уточнить детали пакета",
       viewAllServices: "Все пакеты",
+
+      testimonialsEyebrow: "отзывы клиентов",
+      testimonialsTitle: "Тёплые слова от наших клиентов",
+      testimonials: [
+        {
+          name: "Сара М.",
+          event: "День рождения",
+          quote:
+            "Air Decor полностью преобразил наш зал. Гирлянда из шаров была просто потрясающей — такой нежной и элегантной. Все гости спрашивали, кто занимался оформлением!",
+        },
+        {
+          name: "Эмили и Джейк",
+          event: "Свадьба",
+          quote:
+            "Мы не могли представить нашу свадьбу без этой великолепной арки. Именно та мягкая, романтичная атмосфера, о которой мы мечтали. Очень рекомендуем!",
+        },
+        {
+          name: "Таня Р.",
+          event: "Baby Shower",
+          quote:
+            "Пастельная палитра была просто идеальной. Всё выглядело так красиво и гармонично. Наш baby shower получился по-настоящему особенным.",
+        },
+      ],
     },
 
     common: {
       basic: "Базовый",
       premium: "Премиум",
       luxury: "Люкс",
+      price1: "от $150",
+      price2: "от $250",
+      price3: "от $400",
     },
 
     about: {
@@ -324,6 +427,39 @@ export const content = {
       designApproach: "Подход к дизайну",
       designText:
         "Каждая композиция строится на мягкости, визуальном балансе, элегантных пропорциях и аккуратной подаче, которая красиво смотрится на фотографиях.",
+
+      ctaEyebrow: "давайте создадим что-то красивое",
+      ctaTitle: "Продуманное оформление шарами для событий, которым нужен мягкий и элегантный образ",
+      ctaBtn: "получить расчет",
+
+      faqEyebrow: "Вопросы и ответы",
+      faqTitle: "Часто задаваемые вопросы",
+      faq: [
+        {
+          q: "За сколько времени нужно бронировать?",
+          a: "Рекомендуем бронировать за 3–4 недели до стандартного мероприятия и за 6–8 недель — для свадеб или крупных инсталляций. Это позволяет нам тщательно подготовиться и подобрать все необходимые материалы.",
+        },
+        {
+          q: "Вы привозите и устанавливаете декор?",
+          a: "Да — доставка и полная установка включены в каждый пакет. Мы приезжаем заранее, чтобы всё было идеально готово до прихода гостей.",
+        },
+        {
+          q: "Можно ли выбрать собственные цвета?",
+          a: "Конечно. Индивидуальная цветовая палитра доступна во всех пакетах. Мы работаем с вами, чтобы точно подобрать оттенки под ваш образ мероприятия.",
+        },
+        {
+          q: "Как долго сохраняется оформление из шаров?",
+          a: "Латексные шары в помещении обычно выглядят красиво 12–24 часа. Фольгированные шары могут держаться несколько дней. Всё оформление рассчитано на то, чтобы выглядеть безупречно на протяжении всего мероприятия.",
+        },
+        {
+          q: "Можно ли добавить дополнения к пакету?",
+          a: "Да! Мы предлагаем широкий выбор дополнений: индивидуальные таблички, расширенные задники, премиальные шары и крупные инсталляции. Всё это можно добавить к любому пакету во время консультации.",
+        },
+        {
+          q: "Какова политика отмены заказа?",
+          a: "Мы просим уведомить об отмене не менее чем за 48 часов. Депозит не возвращается, однако может быть перенесен на другую дату в течение 6 месяцев.",
+        },
+      ],
     },
 
     quote: {
@@ -357,5 +493,23 @@ export const content = {
       requiredNote: "обязательные поля",
       errorMsg: "Что-то пошло не так. Пожалуйста, попробуйте снова.",
     },
+
+    thankYou: {
+      eyebrow: "запрос получен",
+      title: "Спасибо, что обратились к нам!",
+      text: "Мы получили ваш запрос на расчет и свяжемся с вами в течение 24 часов. Пока ждете — загляните в нашу галерею за вдохновением.",
+      homeBtn: "на главную",
+      galleryBtn: "посмотреть галерею",
+    },
+
+    notFound: {
+      label: "404",
+      title: "Страница не найдена",
+      text: "Похоже, эта страница улетела. Давайте вернёмся к чему-то красивому.",
+      homeBtn: "на главную",
+      galleryBtn: "посмотреть галерею",
+    },
   },
 };
+
+export type T = typeof content["en"];

@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import type { Lang } from "../types";
+import type { T } from "../content";
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   isActive
@@ -11,12 +13,11 @@ export default function Navbar({
   setLang,
   t,
 }: {
-  lang: "en" | "ru";
-  setLang: (l: "en" | "ru") => void;
-  t: any;
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  t: T;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -89,7 +90,6 @@ export default function Navbar({
         {isOpen && (
           <div
             id="mobile-menu"
-            ref={menuRef}
             className="mt-4 rounded-[1.8rem] border border-white/40 bg-white/75 p-5 shadow-lg backdrop-blur-md md:hidden"
           >
             <nav className="flex flex-col gap-4 text-base" aria-label="Mobile navigation">

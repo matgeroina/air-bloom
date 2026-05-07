@@ -1,30 +1,25 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Reveal } from "../components/Reveal";
+import type { T } from "../content";
 
-const packages = (t: any) => [
-  {
-    tier: "01",
-    title: t.common.basic,
-    price: "from $150",
-    text: t.home.package1Text,
-  },
-  {
-    tier: "02",
-    title: t.common.premium,
-    price: "from $250",
-    text: t.home.package2Text,
-  },
-  {
-    tier: "03",
-    title: t.common.luxury,
-    price: "from $400",
-    text: t.home.package3Text,
-  },
+const packages = (t: T) => [
+  { tier: "01", title: t.common.basic,   price: t.common.price1, text: t.home.package1Text },
+  { tier: "02", title: t.common.premium, price: t.common.price2, text: t.home.package2Text },
+  { tier: "03", title: t.common.luxury,  price: t.common.price3, text: t.home.package3Text },
 ];
 
-export default function Home({ t }: any) {
+export default function Home({ t }: { t: T }) {
   return (
     <>
+      <Helmet>
+        <title>Air Decor — Elegant Balloon Decoration Studio</title>
+        <meta name="description" content="Soft, airy, and beautifully styled balloon decorations for birthdays, weddings, baby showers, and special events." />
+        <meta property="og:title" content="Air Decor — Elegant Balloon Decoration Studio" />
+        <meta property="og:description" content="Soft, airy, and beautifully styled balloon decorations for birthdays, weddings, baby showers, and special events." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#e9dde2] via-[#eddfe6] to-[#f4ecef]">
         <div className="hero-blob left-[-5rem] top-16 h-80 w-80 bg-white/40" />
@@ -186,6 +181,60 @@ export default function Home({ t }: any) {
             >
               {t.home.viewAllServices}
             </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── Testimonials ────────────────────────────────────────── */}
+      <section className="bg-gradient-to-b from-[#f8f2f5] to-[#efe3e8] px-5 py-24 md:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow mb-4">{t.home.testimonialsEyebrow}</p>
+            <h2 className="section-title font-semibold">
+              {t.home.testimonialsTitle}
+            </h2>
+          </Reveal>
+
+          <Reveal className="mt-14" delay={80}>
+            <div className="grid gap-6 md:grid-cols-3">
+              {t.home.testimonials.map(
+                (item) => (
+                  <article
+                    key={item.name}
+                    className="soft-card flex flex-col rounded-[2rem] p-8"
+                  >
+                    {/* Stars */}
+                    <div className="flex gap-1 text-[#d4a5b3]" aria-label="5 out of 5 stars">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg key={i} width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                          <path d="M8 1l1.854 3.756L14 5.528l-3 2.924.708 4.13L8 10.5l-3.708 2.082L5 8.452 2 5.528l4.146-.772L8 1z" />
+                        </svg>
+                      ))}
+                    </div>
+
+                    {/* Quote */}
+                    <blockquote className="mt-5 flex-1 leading-[1.85] text-[#715d64]">
+                      <span className="luxury-serif mr-1 text-3xl leading-none text-[#d4a5b3]">"</span>
+                      {item.quote}
+                      <span className="luxury-serif ml-1 text-3xl leading-none text-[#d4a5b3]">"</span>
+                    </blockquote>
+
+                    {/* Author */}
+                    <div className="mt-6 flex items-center gap-3 border-t border-[#f0e5e9] pt-5">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#f6dce5] to-[#ede4ea] text-sm font-semibold text-[#c792a2]">
+                        {item.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-[#4d3c42]">{item.name}</p>
+                        <p className="text-xs uppercase tracking-[0.18em] text-[#b796a0]">
+                          {item.event}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                )
+              )}
+            </div>
           </Reveal>
         </div>
       </section>
